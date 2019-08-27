@@ -11,17 +11,19 @@ namespace Labb4
             {
                 new int [] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
                 new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 3, 1 },
                 new int [] { 1, 0, 0, 6, 0, 0, 0, 0, 0, 1 },
+                new int [] { 1, 1, 1, 1, 1, 1, 5, 1, 1, 1 },
                 new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 3, 0, 0, 0, 0, 1 },
+                new int [] { 1, 0, 4, 0, 0, 0, 0, 0, 0, 1 },
                 new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 4, 1 },
+                new int [] { 1, 0, 0, 0, 0, 4, 0, 0, 4, 1 },
                 new int [] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
             });
 
             bool playing = true;
+
+            int playerTurns = 0;
 
 
             // Welcome message
@@ -33,6 +35,7 @@ namespace Labb4
             while (playing)
             {
                 map.Print();
+                Console.WriteLine($"You have used {playerTurns} turns.");
                 Console.WriteLine("Navigate through the map with the W A S D keys");
                 var playerDirection = Console.ReadKey().Key;
                 if (playerDirection == ConsoleKey.W)
@@ -51,11 +54,11 @@ namespace Labb4
                 {
                     map.MoveInDirection(Direction.Left);
                 }
+
+                playerTurns++;
                 Console.Clear();
             }
             
-
-            // TODO: GÖR EN FÖR X OCH EN FÖR Y istället!!!
             Console.ReadKey();
         }
     }
