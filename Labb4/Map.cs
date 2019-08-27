@@ -55,15 +55,53 @@ namespace Labb4
             {
                 case Program.Direction.Up:
                     IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    playerYPosition -= 1;
+                    if(playerYPosition <= 0)
+                    {
+                        playerYPosition = 0; 
+                    } else
+                    {
+                        playerYPosition -= 1;
+                    }
                     IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
                     break;
                 case Program.Direction.Down:
+                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
+                    if (playerYPosition >= intMap.Length -1)
+                    {
+                        playerYPosition = IntMap.Length -1;
+                    }
+                    else
+                    {
+                        playerYPosition += 1;
+                    }
+                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
 
                     break;
                 case Program.Direction.Left:
+                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
+                    if (playerXPosition <= 0)
+                    {
+                        playerXPosition = 0;
+                    }
+                    else
+                    {
+                        playerXPosition -= 1;
+                    }
+                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
+
                     break;
                 case Program.Direction.Right:
+                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
+                    if (playerXPosition >= intMap[0].Length - 1)
+                    {
+                        playerXPosition = IntMap[0].Length -1;
+                    }
+                    else
+                    {
+                        playerXPosition += 1;
+                    }
+                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
+
                     break;
             }
             
