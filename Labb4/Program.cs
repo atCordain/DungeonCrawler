@@ -24,11 +24,12 @@ namespace Labb4
             bool playing = true;
 
 
-            // Main loop
+            // Welcome message
 
             Console.WriteLine("Welcome to Dungeon Crawler, you will navigate through the game and try to reach the exit through collecting keys in different enviroments and facing different obsticles");
             Console.WriteLine("Where would you like to go?");
 
+            // Main Play Loop
             while (playing)
             {
                 map.Print();
