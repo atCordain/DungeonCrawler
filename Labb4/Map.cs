@@ -12,11 +12,11 @@ namespace Labb4
         //TODO ändra till ENUM
         enum Room { Empty, Wall, Monster, Key, Exit, Door, Player};
         string[] mapCell = new string[] { ".", "#", "M", "N", "U", "D", "P" };
+        IRoom[][] rooms;
 
         public Map (int[][] intMap)
         {
-            this.IntMap = intMap;
-            SetupBoard();
+            SetupBoard(intMap);
         }
         
         public void Print()
@@ -25,6 +25,7 @@ namespace Labb4
             {
                 for (int j = 0; j < IntMap[i].GetLength(0); j++)
                 {
+
                     Console.Write(mapCell[IntMap[i][j]]);
                     Console.Write(" ");
                 }
@@ -32,20 +33,41 @@ namespace Labb4
             }  
         }
 
-        private void SetupBoard()
+        private void SetupBoard(int[][] intMap)
         {
-            for (int i = 0; i < IntMap.Length; i++)
+            rooms = new IRoom[intMap.Length][];
+            for (int i = 0; i < intMap.Length; i++)
             {
-                for (int j = 0; j < IntMap[i].GetLength(0); j++)
+                for (int j = 0; j < intMap[i].GetLength(0); j++)
                 {
-                    if (IntMap[i][j] == (int)Room.Player)
+                    Room room = (Room)intMap[i][j];
+                    switch (room)
+                    {
+                        case Room.Empty:
+                            //rooms[i][j] = new EmptyRoom;
+                            break;
+                        case Room.Wall:
+                            break;
+                        case Room.Monster:
+                            break;
+                        case Room.Key:
+                            break;
+                        case Room.Exit:
+                            break;
+                        case Room.Door:
+                            rooms[i][j] = new Door();
+                            break;
+                        case Room.Player:
+                            break;
+                    }
+                    if (intMap[i][j] == (int)Room.Player)
                     {
                         playerYPosition = i;
                         playerXPosition = j;
                     }
                 }
             }
-            
+
         }
         public int[][] IntMap { get => intMap; set => intMap = value; }
 
