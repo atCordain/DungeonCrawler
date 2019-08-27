@@ -8,6 +8,8 @@ namespace Labb4
     {
         int[][] intMap;
         int playerXPosition, playerYPosition;
+        public int[][] IntMap { get => intMap; set => intMap = value; }
+
 
         //TODO ändra till ENUM
         enum Room { Empty, Wall, Monster, Key, Exit, Door, Player};
@@ -55,7 +57,7 @@ namespace Labb4
                         case Room.Exit:
                             break;
                         case Room.Door:
-                            rooms[i][j] = new Door();
+                            //rooms[i][j] = new Door(); // Throws NUll Exception 
                             break;
                         case Room.Player:
                             break;
@@ -69,7 +71,6 @@ namespace Labb4
             }
 
         }
-        public int[][] IntMap { get => intMap; set => intMap = value; }
 
         public void  MoveInDirection (Program.Direction dir)
         {

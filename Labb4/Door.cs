@@ -18,6 +18,7 @@ namespace Labb4
         public int Keys { get => keys; set => keys = value; }
         public string Symbol { get => symbol; set => symbol = value; }
 
+
         public bool TryEnter()
         
         {

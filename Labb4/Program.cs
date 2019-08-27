@@ -2,7 +2,7 @@
 
 namespace Labb4
 {
-    class Program
+    public abstract class Program : Monster
     {
         public enum Direction { Up, Down, Left, Right }
         static void Main(string[] args)
@@ -24,7 +24,6 @@ namespace Labb4
             bool playing = true;
 
             int playerTurns = 0;
-
 
             // Welcome message
 
