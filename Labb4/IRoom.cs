@@ -6,9 +6,6 @@ namespace Labb4
 {
     public interface IRoom
     {
-        int Keys { get; set; }
-        string Symbol { get; set; }
-
         bool TryEnter();
     }
 }
