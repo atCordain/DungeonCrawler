@@ -4,7 +4,7 @@ namespace Labb4
 {
 
 
-    class Map
+     class Map
     {
         int[][] intMap;
         int playerXPosition, playerYPosition;
