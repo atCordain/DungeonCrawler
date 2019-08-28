@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Labb4
 {
-    public class Door : IRoom
+    class Door : SquareClass , IRoom
     {
         private string symbol;
         private int keys;
 
-        public Door()
+        public Door(string inRoomSign)
         {
             this.Symbol = "D";
             this.Keys = 0;
@@ -18,7 +18,17 @@ namespace Labb4
         public int Keys { get => keys; set => keys = value; }
         public string Symbol { get => symbol; set => symbol = value; }
 
-        public bool TryEnter()
+        public override string RoomSign()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Square(string inRoomSign)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool TryEnter()
         
         {
             /*
