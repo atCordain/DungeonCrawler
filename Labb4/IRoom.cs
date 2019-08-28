@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Labb4
 {
-    public interface IRoom
+    public interface IRoom 
     {
         bool TryEnter();
     }
