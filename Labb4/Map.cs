@@ -4,7 +4,7 @@ namespace Labb4
 {
      class Map
     {   
-        enum SquareType { Room, Wall, Door, Key, Exit};
+        enum SquareType { Room, Wall, Door, Key, Exit, Monster, Trap};
         internal SquareClass[,] rooms;
 
         public Map (int[,] intMap)
@@ -53,6 +53,12 @@ namespace Labb4
                             break;
                         case SquareType.Key:
                             rooms[row, column] = new Key();
+                            break;
+                        case SquareType.Monster:
+                            rooms[row, column] = new Monster();
+                            break;
+                        case SquareType.Trap:
+                            rooms[row, column] = new Trap();
                             break;
                         case SquareType.Exit:
                             rooms[row, column] = new Exit();
