@@ -16,13 +16,11 @@ namespace Labb4
         public bool TryEnter()
         {
             //if player has key return true
-            if (true ){
+            if (Player.keys > 0){
                 return true;     
             } else {
                 return false;
             }
-            throw new NotImplementedException();
-
         }
     }
 }
