@@ -14,9 +14,9 @@ namespace Labb4
         
         public void Print(int playerX, int playerY, string playerSign)
         {
-            for (int row = 0; row < rooms.GetLength(0); row++)
+            for (int row = playerY - 1; row < playerY + 1; row++)
             {
-                for (int column = 0; column < rooms.GetLength(1); column++)
+                for (int column = playerX - 1; column < playerX + 1; column++)
                 {
                     if (row == playerY && column == playerX)
                     {
@@ -57,9 +57,9 @@ namespace Labb4
                         case SquareType.Monster:
                             rooms[row, column] = new Monster();
                             break;
-                        //case SquareType.Trap:
-                        //    rooms[row, column] = new Trap();
-                        //    break;
+                        case SquareType.Trap:
+                            rooms[row, column] = new Trap();
+                            break;
                         case SquareType.Exit:
                             rooms[row, column] = new Exit();
                             break;
