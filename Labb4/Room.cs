@@ -8,7 +8,7 @@ namespace Labb4
     {
         public override string RoomSign { get => roomSign; set => roomSign = value; }
        
-        public override void Square()
+        public Room()
         {
             RoomSign = "."; 
         }
@@ -16,11 +16,14 @@ namespace Labb4
         public bool TryEnter()
         {
             //if player has key return true
+            /*
             if (Player.keys > 0){
                 return true;     
             } else {
                 return false;
             }
+            */
+            return true;
         }
     }
 }

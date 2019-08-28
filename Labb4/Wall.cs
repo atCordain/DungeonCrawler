@@ -8,7 +8,7 @@ namespace Labb4
     {
         public override string RoomSign { get => roomSign; set => roomSign = value; }
 
-        public override void Square()
+        public Wall()
         {
             RoomSign = "#";  
         }

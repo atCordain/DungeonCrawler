@@ -6,7 +6,7 @@ namespace Labb4
 {
     class Exit : SquareClass, IRoom
     {
-        public override void Square()
+        public Exit()
         {
             RoomSign = "E";
         }
