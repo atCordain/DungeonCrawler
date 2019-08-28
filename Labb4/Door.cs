@@ -7,7 +7,7 @@ namespace Labb4
     class Door : SquareClass , IRoom
     {
         public override string RoomSign { get => roomSign; set => roomSign = value; }
-        
+        internal bool notVisited = true;
 
         public Door()
         {
@@ -17,16 +17,26 @@ namespace Labb4
         public bool TryEnter(Player player)
         {
             
-            if (player.TakeKey())
+            if (notVisited)
             {
-                //TODO Sno 1 nyckel från Player
-                RoomSign = ".";
-                return true;
+                if (player.TakeKey())
+                {
+                    RoomSign = ".";
+                    notVisited = false;
+                    return true;
 
-            } else
-            {
-                return false;
+                }
+                else
+                {
+                    Console.WriteLine("You need a Key to open this door!");
+                    return false;
+                }
             }
+            else
+            {
+                return true;
+            }
+                
         }
     }
 }
