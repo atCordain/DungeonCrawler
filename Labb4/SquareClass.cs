@@ -8,7 +8,6 @@ namespace Labb4
     {
         internal string roomSign;
         abstract public void Square();
-
-        abstract public string RoomSign { get; set;  } 
+        abstract public string RoomSign { get;  set;}
     }
 }
