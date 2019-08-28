@@ -6,6 +6,6 @@ namespace Labb4
 {
     public interface IRoom 
     {
-        bool TryEnter();
+        bool TryEnter(Player player);
     }
 }

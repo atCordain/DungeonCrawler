@@ -12,13 +12,19 @@ namespace Labb4
             SetupBoard(intMap);
         }
         
-        public void Print()
+        public void Print(int playerX, int playerY, string playerSign)
         {
             for (int row = 0; row < rooms.GetLength(0); row++)
             {
                 for (int column = 0; column < rooms.GetLength(1); column++)
                 {
-                    Console.Write(rooms[row, column].RoomSign);
+                    if (row == playerY && column == playerX)
+                    {
+                        Console.Write(playerSign); 
+                    } else
+                    {
+                        Console.Write(rooms[row, column].RoomSign);
+                    }
                     Console.Write(" ");
                 }
                 Console.WriteLine();
@@ -65,6 +71,12 @@ namespace Labb4
         public int GetXBounds()
         {
             return rooms.GetLength(1);
+        }
+
+        public IRoom GetSquare(int x, int y)
+        {
+            return rooms[y, x]; 
+
         }
     }
 }
