@@ -14,9 +14,9 @@ namespace Labb4
         
         public void Print(int playerX, int playerY, string playerSign)
         {
-            for (int row = playerY - 1; row < playerY + 1; row++)
+            for (int row = playerY - 1; row < playerY + 2; row++)
             {
-                for (int column = playerX - 1; column < playerX + 1; column++)
+                for (int column = playerX - 1; column < playerX + 2; column++)
                 {
                     if (row == playerY && column == playerX)
                     {

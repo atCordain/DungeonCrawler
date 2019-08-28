@@ -43,6 +43,7 @@ namespace Labb4
                 Console.WriteLine("Navigate through the map with the W A S D keys");
                 MoveInDirection(player, map, GetMoveDirection());
                 player.Turns += 1;
+                Console.ReadKey();
                 Console.Clear();
             }
             Console.WriteLine($"Congratulations you made it through the maze in {player.Turns} amount of moves"); 
