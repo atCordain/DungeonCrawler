@@ -2,8 +2,6 @@
 
 namespace Labb4
 {
-
-
      class Map
     {
         int[][] intMap;

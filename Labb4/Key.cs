@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Labb4
 {
-    class Door : SquareClass , IRoom
+    class Key : SquareClass, IRoom
     {
         public override string RoomSign()
         {
@@ -18,8 +18,9 @@ namespace Labb4
 
         public bool TryEnter()
         {
-            // Om inga nycklar 
-            return false;
+            //TODO give Player + 1 keys
+            
+            throw new NotImplementedException();
         }
     }
 }
