@@ -19,8 +19,8 @@ namespace Labb4
         {
             if (notVisited)
             {
-                player.Turns -= 10;
-                Console.WriteLine("You encountered a Monster and beat it! You reduced number of turns by 10!");
+                player.Turns += 10;
+                Console.WriteLine("You encountered a Monster and it took 10 turns!");
                 RoomSign = ".";
                 notVisited = false;
             }
