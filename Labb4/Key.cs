@@ -6,21 +6,19 @@ namespace Labb4
 {
     class Key : SquareClass, IRoom
     {
-        public override string RoomSign()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Square()
         {
-            throw new NotImplementedException();
+            RoomSign = "K";
         }
 
+        public override string RoomSign { get => roomSign; set => roomSign = value; }
+                
         public bool TryEnter()
         {
-            //TODO give Player + 1 keys
             
-            throw new NotImplementedException();
+            RoomSign = ".";
+            //TODO give Player + 1 keys
+            return true;
         }
     }
 }
