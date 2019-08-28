@@ -2,7 +2,7 @@
 
 namespace Labb4
 {
-    public abstract class Program : Monster
+    public abstract class Program 
     {
         public enum Direction { Up, Down, Left, Right }
         static void Main(string[] args)

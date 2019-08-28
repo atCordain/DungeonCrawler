@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Labb4
 {
-    public abstract class Monster
+    class Walls
     {
-        
+
     }
 }

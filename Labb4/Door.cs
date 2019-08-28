@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Labb4
 {
-    public class Door : IRoom
+    public class Door : IRoom 
     {
         private string symbol;
         private int keys;
