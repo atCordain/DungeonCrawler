@@ -19,7 +19,7 @@ namespace Labb4
         {
             if (notVisited)
             {
-                player.Keys += 1; 
+                player.Keys += KeyValue(); 
                 RoomSign = ".";
                 notVisited = false; 
                 return true;
@@ -28,6 +28,12 @@ namespace Labb4
                 return true; 
             }
             //TODO give Player + 1 keys
+        }
+
+        public int KeyValue()
+        {
+            Random rnd = new Random();
+            return rnd.Next(1,3); 
         }
     }
 }
