@@ -24,7 +24,7 @@ namespace Labb4
             if (Keys > 0)
             {
                 Keys -= 1; 
-                return true; // just nu 
+                return true;
             }
             else
             {

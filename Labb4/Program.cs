@@ -26,7 +26,7 @@ namespace Labb4
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
             });
 
-            Player player = new Player(1,1, "P");
+            Player player = new Player(1,1, "@");
 
             bool playing = true;
 
