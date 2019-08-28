@@ -4,86 +4,28 @@ using System.Text;
 
 namespace Labb4
 {
+
     class Player
     {
-        public static string name { get; set; }
-        public static int keys { get; set;} 
-        public static int turns { get; set; }
-        public int playerX { get; set; }
-        public int playerY { get; set; }
-        public int playerSign { get; set; }
+        internal string playerName, playerSign;
+        internal int turns, playerX, playerY, keys;
 
         public Player()
         {
+            Turns = 0;
 
         }
-
-        public void MoveInDirection(Program.Direction dir)
-        {
-            switch (dir)
-            {
-                case Program.Direction.Up:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerYPosition <= 0)
-                    {
-                        playerYPosition = 0;
-                    }
-                    else
-                    {
-                        playerYPosition -= 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-                    break;
-                case Program.Direction.Down:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerYPosition >= intMap.Length - 1)
-                    {
-                        playerYPosition = IntMap.Length - 1;
-                    }
-                    else
-                    {
-                        playerYPosition += 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-
-                    break;
-                case Program.Direction.Left:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerXPosition <= 0)
-                    {
-                        playerXPosition = 0;
-                    }
-                    else
-                    {
-                        playerXPosition -= 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-
-                    break;
-                case Program.Direction.Right:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerXPosition >= intMap[0].Length - 1)
-                    {
-                        playerXPosition = IntMap[0].Length - 1;
-                    }
-                    else
-                    {
-                        playerXPosition += 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-
-                    break;
-            }
-
-        }
-
-
-
-
 
         public static bool useKeyTwice()
         {
             return true; // just nu 
         }
+
+        public string PlayerName { get; set; }
+        public int Keys { get => keys; set => keys = value; }
+        public int Turns { get => turns; set => turns = value; }
+        public int PlayerX { get => playerX; set => playerX = value; }
+        public int PlayerY { get => playerY; set => playerY = value; }
+        public string PlayerSign { get => playerSign; set => playerSign = value; }
     }
 }

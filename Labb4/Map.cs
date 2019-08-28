@@ -3,9 +3,7 @@
 namespace Labb4
 {
      class Map
-    {
-        int[,] intMap;
-        
+    {   
         enum SquareType { Room, Wall, Door, Key, Exit};
         internal SquareClass[,] rooms;
 
@@ -16,12 +14,11 @@ namespace Labb4
         
         public void Print()
         {
-            for (int i = 0; i < IntMap.Length; i++)
+            for (int row = 0; row < rooms.GetLength(0); row++)
             {
-                for (int j = 0; j < IntMap[i].GetLength(0); j++)
+                for (int column = 0; column < rooms.GetLength(1); column++)
                 {
-
-                    Console.Write(mapCell[IntMap[i][j]]);
+                    Console.Write(rooms[row, column].RoomSign);
                     Console.Write(" ");
                 }
                 Console.WriteLine();
@@ -60,25 +57,14 @@ namespace Labb4
 
         }
 
-        /*
-        public Room GetRoomInDirection(Program.Direction dir)
+        public int GetYBounds()
         {
-            Room room = new Room;
-            switch (dir)
-            {
-                case Program.Direction.Up:
-                    return room intMap[playerYPosition-1][playerXPosition];
-                    break;
-                case Program.Direction.Down:
-                    break;
-                case Program.Direction.Left:
-                    break;
-                case Program.Direction.Right:
-                    break;
-            }
-
-            return room;
+            return rooms.GetLength(0);
         }
-        */
+
+        public int GetXBounds()
+        {
+            return rooms.GetLength(1);
+        }
     }
 }

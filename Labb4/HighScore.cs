@@ -10,8 +10,10 @@ namespace Labb4
         public static int turns {get; set;}
         public HighScore()
         {
+            /*
             name = Player.name;
             turns = Player.turns;
+            */
         }
     }
 }

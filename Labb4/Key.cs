@@ -6,7 +6,7 @@ namespace Labb4
 {
     class Key : SquareClass, IRoom
     {
-        public override void Square()
+        public Key()
         {
             RoomSign = "K";
         }
