@@ -6,8 +6,8 @@ namespace Labb4
 {
     class HighScore
     {
-        public static string name;
-        public static int turns;
+        public static string name { get; set; }
+        public static int turns {get; set;}
         public HighScore()
         {
             name = Player.name;
