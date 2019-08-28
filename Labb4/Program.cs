@@ -7,9 +7,9 @@ namespace Labb4
         public enum Direction { Up, Down, Left, Right }
         static void Main(string[] args)
         {
-            // HighScore för person1 är 
-            // HighScore för person2 är 
-            // HighScore för person3 är 
+            // HighScore för Petter är 40 drag 
+            // HighScore för Tommy är 28 drag
+            // HighScore för Pontus är 42 
 
             // Använd en array för att representera kartan.
             Map map = new Map(new int[,]
