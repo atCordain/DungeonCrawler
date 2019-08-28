@@ -16,7 +16,7 @@ namespace Labb4
         public bool TryEnter()
         {
             //if player has key return true
-            if (Player.isKeyValid()){
+            if (Player.keys > 0){
                 return true;     
             } else {
                 return false;
