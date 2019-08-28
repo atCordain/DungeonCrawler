@@ -6,14 +6,11 @@ namespace Labb4
 {
     class Wall : SquareClass, IRoom
     {
-        public override string RoomSign()
-        {
-            throw new NotImplementedException();
-        }
+        public override string RoomSign { get => roomSign; set => roomSign = value; }
 
-        public override void Square();
+        public override void Square()
         {
-            throw new NotImplementedException();
+            RoomSign = "#";  
         }
 
         public bool TryEnter()

@@ -6,18 +6,16 @@ namespace Labb4
 {
     class Room : SquareClass, IRoom
     {
-        public override string RoomSign()
+        public override string RoomSign { get => roomSign; set => roomSign = value; }
+       
+        public override void Square()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void Square(string inRoomSign)
-        {
-            throw new NotImplementedException();
+            RoomSign = "."; 
         }
 
         public bool TryEnter()
         {
+            //if player has key return true
             if (true ){
                 return true;     
             } else {

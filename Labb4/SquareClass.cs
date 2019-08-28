@@ -6,9 +6,9 @@ namespace Labb4
 {
     abstract class SquareClass
     {
-        private string roomSign;
+        internal string roomSign;
         abstract public void Square();
 
-        abstract public string RoomSign();
+        abstract public string RoomSign { get;  set;}
     }
 }
