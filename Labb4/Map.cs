@@ -4,17 +4,12 @@ namespace Labb4
 {
      class Map
     {
-        int[][] intMap;
-        int playerXPosition, playerYPosition;
-        public int[][] IntMap { get => intMap; set => intMap = value; }
+        int[,] intMap;
+        
+        enum SquareType { Room, Wall, Door, Key, Exit};
+        internal SquareClass[,] rooms;
 
-
-        //TODO ändra till ENUM
-        enum Room { Empty, Wall, Monster, Key, Exit, Door, Player};
-        string[] mapCell = new string[] { ".", "#", "M", "N", "U", "D", "P" };
-        IRoom[][] rooms;
-
-        public Map (int[][] intMap)
+        public Map (int[,] intMap)
         {
             SetupBoard(intMap);
         }
@@ -33,99 +28,36 @@ namespace Labb4
             }  
         }
 
-        private void SetupBoard(int[][] intMap)
+        private void SetupBoard(int[,] intMap)
         {
-            rooms = new IRoom[intMap.Length][];
-            for (int i = 0; i < intMap.Length; i++)
+            rooms = new SquareClass[intMap.GetLength(0), intMap.GetLength(1)];
+            for (int row = 0; row < intMap.GetLength(0); row++)
             {
-                for (int j = 0; j < intMap[i].GetLength(0); j++)
+                for (int column = 0; column < intMap.GetLength(1); column++)
                 {
-                    Room room = (Room)intMap[i][j];
-                    switch (room)
+
+                    SquareType squareType = (SquareType)intMap[row, column];
+                    switch (squareType)
                     {
-                        case Room.Empty:
-                            //rooms[i][j] = new EmptyRoom;
+                        case SquareType.Room:
+                            rooms[row, column] = new Room();
                             break;
-                        case Room.Wall:
+                        case SquareType.Wall:
+                            rooms[row, column] = new Wall();
                             break;
-                        case Room.Monster:
+                        case SquareType.Door:
+                            rooms[row, column] = new Door();
                             break;
-                        case Room.Key:
+                        case SquareType.Key:
+                            rooms[row, column] = new Key();
                             break;
-                        case Room.Exit:
+                        case SquareType.Exit:
+                            rooms[row, column] = new Exit();
                             break;
-                        case Room.Door:
-                            //rooms[i][j] = new Door(); // Throws NUll Exception 
-                            break;
-                        case Room.Player:
-                            break;
-                    }
-                    if (intMap[i][j] == (int)Room.Player)
-                    {
-                        playerYPosition = i;
-                        playerXPosition = j;
                     }
                 }
             }
 
-        }
-
-        public void  MoveInDirection (Program.Direction dir)
-        {
-            switch (dir)
-            {
-                case Program.Direction.Up:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if(playerYPosition <= 0)
-                    {
-                        playerYPosition = 0; 
-                    } else
-                    {
-                        playerYPosition -= 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-                    break;
-                case Program.Direction.Down:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerYPosition >= intMap.Length -1)
-                    {
-                        playerYPosition = IntMap.Length -1;
-                    }
-                    else
-                    {
-                        playerYPosition += 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-
-                    break;
-                case Program.Direction.Left:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerXPosition <= 0)
-                    {
-                        playerXPosition = 0;
-                    }
-                    else
-                    {
-                        playerXPosition -= 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-
-                    break;
-                case Program.Direction.Right:
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Empty;
-                    if (playerXPosition >= intMap[0].Length - 1)
-                    {
-                        playerXPosition = IntMap[0].Length -1;
-                    }
-                    else
-                    {
-                        playerXPosition += 1;
-                    }
-                    IntMap[playerYPosition][playerXPosition] = (int)Room.Player;
-
-                    break;
-            }
-            
         }
 
         /*

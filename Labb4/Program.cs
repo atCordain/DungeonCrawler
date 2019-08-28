@@ -5,23 +5,25 @@ namespace Labb4
     public class Program 
     {
         public enum Direction { Up, Down, Left, Right }
+        public Object player = new object();
         static void Main(string[] args)
         {
 
             // Använd en array för att representera kartan.
-            Map map = new Map(new int[][]
+            Map map = new Map(new int[,]
             {
-                new int [] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 3, 1 },
-                new int [] { 1, 0, 0, 6, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 1, 1, 1, 1, 1, 5, 1, 1, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 4, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                new int [] { 1, 0, 0, 0, 0, 4, 0, 0, 4, 1 },
-                new int [] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                { 1, 3, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 3, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1 },
+                { 1, 0, 0, 2, 0, 1, 0, 0, 0, 1 },
+                { 1, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
+                { 1, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
+                { 1, 4, 0, 1, 0, 0, 0, 0, 3, 1 },
+                { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
             });
+
 
             bool playing = true;
 
