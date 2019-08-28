@@ -7,6 +7,8 @@ namespace Labb4
         public enum Direction { Up, Down, Left, Right }
         static void Main(string[] args)
         {
+
+            // Använd en array för att representera kartan.
             Map map = new Map(new int[][]
             {
                 new int [] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -23,6 +25,7 @@ namespace Labb4
 
             bool playing = true;
 
+            // Varje förflyttning kostar ett drag
             int playerTurns = 0;
 
             // Welcome message
