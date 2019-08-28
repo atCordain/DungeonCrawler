@@ -57,9 +57,9 @@ namespace Labb4
                         case SquareType.Monster:
                             rooms[row, column] = new Monster();
                             break;
-                        case SquareType.Trap:
-                            rooms[row, column] = new Trap();
-                            break;
+                        //case SquareType.Trap:
+                        //    rooms[row, column] = new Trap();
+                        //    break;
                         case SquareType.Exit:
                             rooms[row, column] = new Exit();
                             break;
