@@ -2,7 +2,7 @@
 
 namespace Labb4
 {
-    class Program
+    public class Program 
     {
         public enum Direction { Up, Down, Left, Right }
         static void Main(string[] args)
@@ -27,7 +27,6 @@ namespace Labb4
 
             // Varje förflyttning kostar ett drag
             int playerTurns = 0;
-
 
             // Welcome message
 
