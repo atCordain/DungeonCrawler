@@ -13,9 +13,11 @@ namespace Labb4
 
         public override string RoomSign { get => roomSign; set => roomSign = value; }
 
-        public bool TryEnter()
+        public bool TryEnter(Player player)
         {
+            player.Playing = false; 
             return true;
         }
+
     }
 }

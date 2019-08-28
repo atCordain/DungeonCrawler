@@ -7,14 +7,17 @@ namespace Labb4
         public enum Direction { Up, Down, Left, Right }
         static void Main(string[] args)
         {
+            // HighScore för person1 är 
+            // HighScore för person2 är 
+            // HighScore för person3 är 
 
             // Använd en array för att representera kartan.
             Map map = new Map(new int[,]
             {
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-                { 1, 3, 0, 0, 0, 0, 0, 0, 0, 1 },
-                { 1, 0, 0, 0, 0, 0, 0, 0, 3, 1 },
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 0, 0, 0, 0, 3, 1 },
+                { 1, 0, 0, 3, 0, 0, 0, 0, 0, 1 },
                 { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1 },
                 { 1, 0, 0, 2, 0, 1, 0, 0, 0, 1 },
                 { 1, 0, 0, 1, 0, 1, 0, 1, 0, 1 },
@@ -23,30 +26,27 @@ namespace Labb4
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
             });
 
-            Player player = new Player();
+            Player player = new Player(3,2, "P");
 
             bool playing = true;
 
-            // Varje förflyttning kostar ett drag
-            int playerTurns = 0;
-
             // Welcome message
-
             Console.WriteLine("Welcome to Dungeon Crawler, you will navigate through the game and try to reach the exit through collecting keys in different enviroments and facing different obsticles");
-            Console.Write(System.Environment.NewLine + "Enter your name:");
-            //TODO Lägg till namn mm
 
             // Main Play Loop
-            while (playing)
+            while (player.Playing)
             {
-                map.Print();
-                Console.WriteLine($"You have used {playerTurns} turns.");
+                map.Print(player.PlayerX, player.PlayerY, player.playerSign);
+                Console.WriteLine($"You have used {player.Turns} turns.");
+                Console.WriteLine($"You have  {player.Keys} keys.");
+
                 Console.WriteLine("Navigate through the map with the W A S D keys");
                 MoveInDirection(player, map, GetMoveDirection());
                 player.Turns += 1;
                 Console.Clear();
             }
-            
+            Console.WriteLine($"Congratulations you made it through the maze in {player.Turns} amount of moves"); 
+            Console.ReadKey();
             Console.ReadKey();
         }
 
@@ -67,10 +67,19 @@ namespace Labb4
         }
         static void MoveInDirection(Player player, Map map, Direction dir)
         {
-            if (dir == Direction.Up && player.PlayerY > 0) player.PlayerY -= 1;
-            else if (dir == Direction.Down && player.PlayerY < map.GetYBounds() - 1) player.PlayerY += 1;
-            else if (dir == Direction.Left && player.PlayerX > 0) player.PlayerX -= 1;
-            else if (dir == Direction.Right && player.PlayerX < map.GetXBounds() - 1) player.PlayerX += 1; 
+            if (dir == Direction.Up 
+                && player.PlayerY > 0 
+                && map.GetSquare(player.PlayerX ,player.PlayerY -1).TryEnter(player))
+            {
+
+                player.PlayerY -= 1;
+            }
+            else if (dir == Direction.Down && player.PlayerY < map.GetYBounds() - 1 && map.GetSquare(player.PlayerX, player.PlayerY + 1).TryEnter(player)) player.PlayerY += 1;
+            else if (dir == Direction.Left && player.PlayerX > 0 && map.GetSquare(player.PlayerX -1, player.PlayerY).TryEnter(player)) player.PlayerX -= 1;
+            else if (dir == Direction.Right && player.PlayerX < map.GetXBounds() - 1 && map.GetSquare(player.PlayerX +1, player.PlayerY).TryEnter(player)) player.PlayerX += 1; 
         }
+
+     
+  
     }
 }

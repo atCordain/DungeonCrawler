@@ -6,6 +6,8 @@ namespace Labb4
 {
     class Key : SquareClass, IRoom
     {
+
+        bool notVisited = true; 
         public Key()
         {
             RoomSign = "K";
@@ -13,12 +15,19 @@ namespace Labb4
 
         public override string RoomSign { get => roomSign; set => roomSign = value; }
                 
-        public bool TryEnter()
+        public bool TryEnter(Player player)
         {
-            
-            RoomSign = ".";
+            if (notVisited)
+            {
+                player.Keys += 1; 
+                RoomSign = ".";
+                notVisited = false; 
+                return true;
+            } else
+            {
+                return true; 
+            }
             //TODO give Player + 1 keys
-            return true;
         }
     }
 }

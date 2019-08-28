@@ -5,27 +5,39 @@ using System.Text;
 namespace Labb4
 {
 
-    class Player
+    public class Player
     {
-        internal string playerName, playerSign;
+        internal string playerSign;
         internal int turns, playerX, playerY, keys;
+        internal bool playing = true;
 
-        public Player()
+        public Player(int locationX, int locationY, string sign)
         {
             Turns = 0;
-
+            PlayerX = locationX;
+            PlayerY = locationY;
+            PlayerSign = sign; 
         }
-
-        public static bool useKeyTwice()
+        
+        public bool TakeKey()
         {
-            return true; // just nu 
+            if (Keys > 0)
+            {
+                Keys -= 1; 
+                return true; // just nu 
+            }
+            else
+            {
+                return false; 
+            }
         }
 
-        public string PlayerName { get; set; }
+
         public int Keys { get => keys; set => keys = value; }
         public int Turns { get => turns; set => turns = value; }
         public int PlayerX { get => playerX; set => playerX = value; }
         public int PlayerY { get => playerY; set => playerY = value; }
         public string PlayerSign { get => playerSign; set => playerSign = value; }
+        public bool Playing { get => playing; set => playing = value; }
     }
 }

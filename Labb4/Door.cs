@@ -14,10 +14,10 @@ namespace Labb4
             RoomSign = "D";
         }
 
-        public bool TryEnter()
+        public bool TryEnter(Player player)
         {
             
-            if (true)
+            if (player.TakeKey())
             {
                 //TODO Sno 1 nyckel från Player
                 RoomSign = ".";

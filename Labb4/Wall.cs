@@ -13,7 +13,7 @@ namespace Labb4
             RoomSign = "#";  
         }
 
-        public bool TryEnter()
+        public bool TryEnter(Player player)
         {
             return false; 
             throw new NotImplementedException();
