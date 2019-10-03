@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Labb4
+﻿namespace Labb4
 {
 
     public class Player
     {
-        internal string playerSign;
-        internal int turns, playerX, playerY, keys;
-        internal bool playing = true;
+        private string playerSign;
+        private int turnsTaken, horizontalPosition, verticalPosition, keysInInventory;
+        internal bool isActive = true;
 
-        public Player(int locationX, int locationY, string sign)
+        public Player(int horizontalPosition, int verticalPosition, string sign)
         {
-            Turns = 0;
-            PlayerX = locationX;
-            PlayerY = locationY;
-            PlayerSign = sign; 
+            TurnsTaken = 0;
+            HorizontalPosition = horizontalPosition;
+            VerticalPosition = verticalPosition;
+            Sign = sign; 
         }
         
-        public bool TakeKey()
+        public bool TryToTakeKey()
         {
-            if (Keys > 0)
+            if (KeysInInventory > 0)
             {
-                Keys -= 1; 
+                KeysInInventory -= 1; 
                 return true;
             }
             else
@@ -32,12 +28,11 @@ namespace Labb4
             }
         }
 
-
-        public int Keys { get => keys; set => keys = value; }
-        public int Turns { get => turns; set => turns = value; }
-        public int PlayerX { get => playerX; set => playerX = value; }
-        public int PlayerY { get => playerY; set => playerY = value; }
-        public string PlayerSign { get => playerSign; set => playerSign = value; }
-        public bool Playing { get => playing; set => playing = value; }
+        public int KeysInInventory { get => keysInInventory; set => keysInInventory = value; }
+        public int TurnsTaken { get => turnsTaken; set => turnsTaken = value; }
+        public int HorizontalPosition { get => horizontalPosition; set => horizontalPosition = value; }
+        public int VerticalPosition { get => verticalPosition; set => verticalPosition = value; }
+        public string Sign { get => playerSign; set => playerSign = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
     }
 }

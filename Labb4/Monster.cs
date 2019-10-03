@@ -4,28 +4,27 @@ using System.Text;
 
 namespace Labb4
 {
-    class Monster : SquareClass, IRoom
+    class Monster : Square, IEnterable
     {
-        bool notVisited = true;
+        private string roomSign;
+        bool isVisited = false;
 
         public Monster()
         {
-            RoomSign = "M"; 
+            roomSign = "M"; 
         }
 
-        public override string RoomSign { get => roomSign; set => roomSign = value; }
-
-        public bool TryEnter(Player player)
+        public bool TryToEnter(Player player)
         {
-            if (notVisited)
+            if (!isVisited)
             {
-                player.Turns += 10;
+                player.TurnsTaken += 10;
                 Console.WriteLine("You encountered a Monster and it took 10 turns!");
-                RoomSign = ".";
-                notVisited = false;
+                roomSign = ".";
+                isVisited = true;
             }
             return true; 
         }
-
+        public override string RoomSign { get => roomSign; }
     }
 }

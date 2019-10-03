@@ -1,30 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Labb4
 {
-    class Trap : SquareClass , IRoom
+    class Trap : Square , IEnterable
     {
-        internal int trapDamage = 5;
-        internal bool notVisisted = true;
+        private string roomSign;
+        private int trapTurnDamage = 5;
+        private bool isVisited = false;
+
         public Trap()
         {
             roomSign = ".";
         }
 
-        public override string RoomSign { get => roomSign; set => roomSign = value; }
-
-        public bool TryEnter(Player player)
+        public bool TryToEnter(Player player)
         {
-            if (notVisisted)
+            if (!isVisited)
             {
-                Console.WriteLine($"You entered a Secret Trap Room, and lost {trapDamage} turns");
-                player.Turns += trapDamage;
-                notVisisted = false;
+                Console.WriteLine($"You entered a Secret Trap Room, and lost {trapTurnDamage} turns");
+                player.TurnsTaken += trapTurnDamage;
+                isVisited = true;
             }
-
             return true;
         }
+
+        public override string RoomSign { get => roomSign; }
     }
 }
