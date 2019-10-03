@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Labb4
+﻿namespace Labb4
 {
-    class Exit : SquareClass, IRoom
+    class Exit : Square, IEnterable
     {
+        private string roomSign;
         public Exit()
         {
-            RoomSign = "E";
+            roomSign = "E";
         }
 
-        public override string RoomSign { get => roomSign; set => roomSign = value; }
-
-        public bool TryEnter(Player player)
+        public bool TryToEnter(Player player)
         {
-            player.Playing = false; 
+            player.IsActive = false; 
             return true;
         }
-
+        public override string RoomSign { get => roomSign; }
     }
 }

@@ -1,42 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Labb4
 {
-    class Door : SquareClass , IRoom
+    class Door : Square , IEnterable
     {
-        public override string RoomSign { get => roomSign; set => roomSign = value; }
-        internal bool notVisited = true;
-
+        private string roomSign;
+        private bool isVisited = false;        
+        
         public Door()
         {
-            RoomSign = "D";
+            roomSign = "D";
         }
 
-        public bool TryEnter(Player player)
+        public bool TryToEnter(Player player)
         {
-            
-            if (notVisited)
+            if (!isVisited)
             {
-                if (player.TakeKey())
+                // This is code to try to unlock the door
+                if (player.TryToTakeKey())
                 {
-                    RoomSign = ".";
-                    notVisited = false;
+                    roomSign = ".";
+                    isVisited = true;
                     return true;
 
-                }
-                else
+                } else
                 {
                     Console.WriteLine("You need a Key to open this door!");
                     return false;
                 }
-            }
-            else
+            } else
             {
                 return true;
-            }
-                
+            }    
         }
+        public override string RoomSign { get => roomSign; }
+
     }
 }

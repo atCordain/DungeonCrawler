@@ -11,7 +11,6 @@ namespace Labb4
             // HighScore för Tommy är 28 drag
             // HighScore för Pontus är 42 
 
-            // Använd en array för att representera kartan.
             Map map = new Map(new int[,]
             {
                 { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -28,25 +27,23 @@ namespace Labb4
 
             Player player = new Player(1,1, "@");
 
-            bool playing = true;
-
-            // Welcome message
             Console.WriteLine("Welcome to Dungeon Crawler, you will navigate through the game and try to reach the exit through collecting keys in different enviroments and facing different obsticles");
 
             // Main Play Loop
-            while (player.Playing)
+            while (player.IsActive)
             {
-                map.Print(player.PlayerX, player.PlayerY, player.playerSign);
-                Console.WriteLine($"You have used {player.Turns} turns.");
-                Console.WriteLine($"You have  {player.Keys} keys.");
+                map.Print(player.HorizontalPosition, player.VerticalPosition, player.Sign);
+                Console.WriteLine($"You have used {player.TurnsTaken} turns.");
+                Console.WriteLine($"You have  {player.KeysInInventory} keys.");
 
                 Console.WriteLine("Navigate through the map with the W A S D keys");
+                Console.WriteLine($"x{player.HorizontalPosition} y{player.VerticalPosition}");
                 MoveInDirection(player, map, GetMoveDirection());
-                player.Turns += 1;
+                player.TurnsTaken += 1;
                 Console.ReadKey();
                 Console.Clear();
             }
-            Console.WriteLine($"Congratulations you made it through the maze in {player.Turns} amount of moves"); 
+            Console.WriteLine($"Congratulations you made it through the maze in {player.TurnsTaken} amount of moves"); 
             Console.ReadKey();
             Console.ReadKey();
         }
@@ -66,21 +63,42 @@ namespace Labb4
                     }     
             }
         }
-        static void MoveInDirection(Player player, Map map, Direction dir)
+        static void MoveInDirection(Player player, Map map, Direction direction)
         {
-            if (dir == Direction.Up 
-                && player.PlayerY > 0 
-                && map.GetSquare(player.PlayerX ,player.PlayerY -1).TryEnter(player))
+            if
+                (
+                direction == Direction.Up &&
+                player.VerticalPosition > 0 &&
+                (map.GetSquareAtPosition(player.HorizontalPosition, player.VerticalPosition - 1) as IEnterable).TryToEnter(player)
+                )
             {
-
-                player.PlayerY -= 1;
+                player.VerticalPosition -= 1;
             }
-            else if (dir == Direction.Down && player.PlayerY < map.GetYBounds() - 1 && map.GetSquare(player.PlayerX, player.PlayerY + 1).TryEnter(player)) player.PlayerY += 1;
-            else if (dir == Direction.Left && player.PlayerX > 0 && map.GetSquare(player.PlayerX -1, player.PlayerY).TryEnter(player)) player.PlayerX -= 1;
-            else if (dir == Direction.Right && player.PlayerX < map.GetXBounds() - 1 && map.GetSquare(player.PlayerX +1, player.PlayerY).TryEnter(player)) player.PlayerX += 1; 
+            else if
+                (
+                direction == Direction.Down &&
+                player.VerticalPosition < map.GetBoundsVertical() - 1 &&
+                (map.GetSquareAtPosition(player.HorizontalPosition, player.VerticalPosition + 1) as IEnterable).TryToEnter(player)
+                )
+            {
+                player.VerticalPosition += 1;
+            }
+            else if (
+                direction == Direction.Left &&
+                player.HorizontalPosition > 0 &&
+                (map.GetSquareAtPosition(player.HorizontalPosition - 1, player.VerticalPosition) as IEnterable).TryToEnter(player)
+                )
+            {
+                player.HorizontalPosition -= 1;
+            }
+            else if (
+                direction == Direction.Right &&
+                player.HorizontalPosition < map.GetBoundsHorizontal() - 1 &&
+                (map.GetSquareAtPosition(player.HorizontalPosition + 1, player.VerticalPosition) as IEnterable).TryToEnter(player)
+                )
+            {
+                player.HorizontalPosition += 1;
+            } 
         }
-
-     
-  
     }
 }

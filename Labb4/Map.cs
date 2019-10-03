@@ -5,25 +5,25 @@ namespace Labb4
      class Map
     {   
         enum SquareType { Room, Wall, Door, Key, Exit, Monster, Trap};
-        internal SquareClass[,] rooms;
+        private Square[,] rooms;
 
         public Map (int[,] intMap)
         {
             SetupBoard(intMap);
         }
         
-        public void Print(int playerX, int playerY, string playerSign)
+        public void Print(int playerPositionHorizontal, int playerPositionVertical, string playerSign)
         {
-            for (int row = playerY - 1; row < playerY + 2; row++)
+            for (int column = playerPositionVertical - 1; column < playerPositionVertical + 2; column++)
             {
-                for (int column = playerX - 1; column < playerX + 2; column++)
+                for (int row = playerPositionHorizontal - 1; row < playerPositionHorizontal + 2; row++)
                 {
-                    if (row == playerY && column == playerX)
+                    if (row == playerPositionHorizontal && column == playerPositionVertical)
                     {
                         Console.Write(playerSign); 
                     } else
                     {
-                        Console.Write(rooms[row, column].RoomSign);
+                        Console.Write(rooms[column, row].RoomSign);
                     }
                     Console.Write(" ");
                 }
@@ -33,35 +33,34 @@ namespace Labb4
 
         private void SetupBoard(int[,] intMap)
         {
-            rooms = new SquareClass[intMap.GetLength(0), intMap.GetLength(1)];
-            for (int row = 0; row < intMap.GetLength(0); row++)
+            rooms = new Square[intMap.GetLength(0), intMap.GetLength(1)];
+            for (int column = 0; column < intMap.GetLength(0); column++)
             {
-                for (int column = 0; column < intMap.GetLength(1); column++)
+                for (int row = 0; row < intMap.GetLength(1); row++)
                 {
-
-                    SquareType squareType = (SquareType)intMap[row, column];
+                    SquareType squareType = (SquareType)intMap[column, row];
                     switch (squareType)
                     {
                         case SquareType.Room:
-                            rooms[row, column] = new Room();
+                            rooms[column, row] = new Room();
                             break;
                         case SquareType.Wall:
-                            rooms[row, column] = new Wall();
+                            rooms[column, row] = new Wall();
                             break;
                         case SquareType.Door:
-                            rooms[row, column] = new Door();
+                            rooms[column, row] = new Door();
                             break;
                         case SquareType.Key:
-                            rooms[row, column] = new Key();
+                            rooms[column, row] = new Key();
                             break;
                         case SquareType.Monster:
-                            rooms[row, column] = new Monster();
+                            rooms[column, row] = new Monster();
                             break;
                         case SquareType.Trap:
-                            rooms[row, column] = new Trap();
+                            rooms[column, row] = new Trap();
                             break;
                         case SquareType.Exit:
-                            rooms[row, column] = new Exit();
+                            rooms[column, row] = new Exit();
                             break;
                     }
                 }
@@ -69,20 +68,19 @@ namespace Labb4
 
         }
 
-        public int GetYBounds()
-        {
-            return rooms.GetLength(0);
-        }
-
-        public int GetXBounds()
+        public int GetBoundsHorizontal()
         {
             return rooms.GetLength(1);
         }
 
-        public IRoom GetSquare(int x, int y)
+        public int GetBoundsVertical()
         {
-            return rooms[y, x]; 
+            return rooms.GetLength(0);
+        }
 
+        public Square GetSquareAtPosition(int horizontalPosition, int verticalPosition)
+        {
+            return rooms[verticalPosition, horizontalPosition]; 
         }
     }
 }

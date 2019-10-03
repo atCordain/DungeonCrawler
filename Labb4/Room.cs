@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Labb4
+﻿namespace Labb4
 {
-    class Room : SquareClass, IRoom
+    class Room : Square, IEnterable
     {
-        public override string RoomSign { get => roomSign; set => roomSign = value; }
-       
+        private string roomSign;
         public Room()
         {
-            RoomSign = "."; 
+            roomSign = "."; 
         }
 
-        public bool TryEnter(Player player)
+        public bool TryToEnter(Player player)
         {
             return true;
         }
+
+        public override string RoomSign { get => roomSign; }
+
     }
 }
