@@ -33,17 +33,15 @@ namespace Labb4
             while (player.IsActive)
             {
                 map.Print(player.HorizontalPosition, player.VerticalPosition, player.Sign);
-                Console.WriteLine($"You have used {player.TurnsTaken} turns.");
-                Console.WriteLine($"You have  {player.KeysInInventory} keys.");
-
-                Console.WriteLine("Navigate through the map with the W A S D keys");
-                Console.WriteLine($"x{player.HorizontalPosition} y{player.VerticalPosition}");
+                Console.WriteLine($"You have used {player.TurnsTaken} turns. \n" +
+                    $"You have  {player.KeysInInventory} keys. \n" +
+                    $"Navigate through the map with the W A S D keys");
                 MoveInDirection(player, map, GetMoveDirection());
                 player.TurnsTaken += 1;
                 Console.ReadKey();
                 Console.Clear();
             }
-            Console.WriteLine($"Congratulations you made it through the maze in {player.TurnsTaken} amount of moves"); 
+            Console.WriteLine($"Congratulations you made it through the maze in {player.TurnsTaken} moves"); 
             Console.ReadKey();
             Console.ReadKey();
         }
